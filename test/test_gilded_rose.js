@@ -84,4 +84,11 @@ describe("Gilded Rose", function () {
       assertItem(gildedRose.updateQuality()[0], "Backstage passes to a TAFKAL80ETC concert", -1, 0);
     });
   });
+
+  describe("Conjured items", function () {
+    xit("should degrade twice as fast in quality", function () {
+      const gildedRose = new Shop([new Item("Conjured item", 10, 10)]);
+      assertItem(gildedRose.updateQuality()[0], "Conjured item", 9, 8);
+    });
+  });
 });
