@@ -27,9 +27,14 @@ describe("Gilded Rose", function () {
       assertItem(gildedRose.updateQuality()[0], "normal", 9, 9);
     });
 
-    it("should degrade quality twice as fast when it is passed sell in date", function () {
+    it("should degrade quality twice as fast when it passes sell in date", function () {
       const gildedRose = new Shop([new Item("normal", 0, 10)]);
       assertItem(gildedRose.updateQuality()[0], "normal", -1, 8);
+    });
+
+    it("should degrade quality twice as fast when it has already passed sell in date", function () {
+      const gildedRose = new Shop([new Item("normal", -3, 10)]);
+      assertItem(gildedRose.updateQuality()[0], "normal", -4, 8);
     });
 
     it("should never degrade to negative quality", function () {
