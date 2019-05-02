@@ -28,6 +28,21 @@ function agedBrieUpdate(item) {
   return item;
 }
 
+function backstageUpdate(item) {
+  item.quality++;
+  if (item.sellIn <= 10) {
+    item.quality++;
+  }
+  if (item.sellIn <= 5) {
+    item.quality++;
+  }
+  if (item.sellIn <= 0) {
+    item.quality = 0;
+  }
+  item.sellIn--;
+  return item;
+}
+
 class Shop {
   constructor(items = []) {
     this.items = items;
@@ -41,6 +56,9 @@ class Shop {
           item = agedBrieUpdate(item);
           break;
         case "Sulfuras, Hand of Ragnaros":
+          break;
+        case "Backstage passes to a TAFKAL80ETC concert":
+          item = backstageUpdate(item);
           break;
         default:
           item = normalUpdate(item);
