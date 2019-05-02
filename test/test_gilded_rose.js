@@ -38,8 +38,8 @@ describe("Gilded Rose", function () {
     });
 
     it("should never degrade to negative quality", function () {
-      const gildedRose = new Shop([new Item("normal", 2, 0)]);
-      assertItem(gildedRose.updateQuality()[0], "normal", 1, 0);
+      const gildedRose = new Shop([new Item("normal", 0, 1)]);
+      assertItem(gildedRose.updateQuality()[0], "normal", -1, 0);
     });
   });
 

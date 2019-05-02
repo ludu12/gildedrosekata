@@ -6,25 +6,43 @@ class Item {
   }
 }
 
+function normalUpdate(item){
+  if (item.sellIn <= 0) {
+    item.quality--;
+  }
+  item.sellIn--;
+  if (item.quality > 0) {
+    item.quality--;
+  }
+  return item;
+}
+
+function agedBrieUpdate(item){
+  if (item.sellIn <= 0) {
+    item.quality++;
+  }
+  item.sellIn--;
+  if (item.quality < 50) {
+    item.quality++;
+  }
+  return item;
+}
+
 class Shop {
   constructor(items = []) {
     this.items = items;
   }
 
-  normalUpdate(item) {
-    if (item.sellIn <= 0) {
-      item.quality--;
-    }
-    item.sellIn--;
-    if (item.quality > 0) {
-      item.quality--;
-    }
-    return item;
-  }
-
   updateQuality() {
     this.items.forEach((item) => {
-      item = this.normalUpdate(item);
+
+      switch (item.name) {
+        case "Aged Brie":
+          item = agedBrieUpdate(item);
+          break;
+        default:
+          item = normalUpdate(item);
+      }
 
       // if (item.name != 'Aged Brie' && item.name != 'Backstage passes to a TAFKAL80ETC concert') {
       //   if (item.quality > 0) {
