@@ -86,9 +86,9 @@ describe("Gilded Rose", function () {
   });
 
   describe("Conjured items", function () {
-    xit("should degrade twice as fast in quality", function () {
-      const gildedRose = new Shop([new Item("Conjured item", 10, 10)]);
-      assertItem(gildedRose.updateQuality()[0], "Conjured item", 9, 8);
+    it("should degrade twice as fast in quality", function () {
+      const gildedRose = new Shop([new Item("Conjured Item", 10, 10)]);
+      assertItem(gildedRose.updateQuality()[0], "Conjured Item", 9, 8);
     });
   });
 });
