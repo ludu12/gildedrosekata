@@ -6,7 +6,7 @@ class Item {
   }
 }
 
-function normalUpdate(item){
+function normalUpdate(item) {
   if (item.sellIn <= 0) {
     item.quality--;
   }
@@ -17,7 +17,7 @@ function normalUpdate(item){
   return item;
 }
 
-function agedBrieUpdate(item){
+function agedBrieUpdate(item) {
   if (item.sellIn <= 0) {
     item.quality++;
   }
@@ -39,6 +39,8 @@ class Shop {
       switch (item.name) {
         case "Aged Brie":
           item = agedBrieUpdate(item);
+          break;
+        case "Sulfuras, Hand of Ragnaros":
           break;
         default:
           item = normalUpdate(item);
